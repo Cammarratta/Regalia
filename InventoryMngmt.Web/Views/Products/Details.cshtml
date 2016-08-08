@@ -1,0 +1,119 @@
+﻿@model InventoryMngmt.Web.ViewModels.InventoryModel
+
+<script>
+
+</script>
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="col-lg-12">
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryProducts.Serial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryProducts.Serial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryProducts.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryProducts.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryProducts.Brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryProducts.Brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryProducts.AcquisitionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryProducts.AcquisitionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryProducts.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryProducts.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryProducts.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryProducts.Description)
+        </dd>
+
+    </dl>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.InventoryProducts.ProductID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+    <div class="col-lg-12">
+        <h3>Transactions: @Model.InventoryProducts.Transactions.Count()</h3>
+        <table class="transact table table-striped">
+            <thead>
+                <tr>
+                    <th>Transactions for Product: @Model.InventoryProducts.Serial</th>
+            </tr>
+        </thead>
+        <tbody class="transact">
+            @foreach (var transaction in Model.InventoryProducts.Transactions)
+            {
+                <tr class="transact">
+                    <td>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => transaction.TransactionID)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => transaction.TransactionID)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => transaction.WarehouseFrom)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => transaction.WarehouseFrom)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => transaction.WarehouseTo)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => transaction.WarehouseTo)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => transaction.Reason)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => transaction.Reason)
+                            </dd>
+                          </dl>
+                    </td>                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>

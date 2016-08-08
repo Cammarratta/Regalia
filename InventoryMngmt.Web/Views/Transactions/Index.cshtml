@@ -1,0 +1,61 @@
+﻿@model IEnumerable<InventoryMngmt.Entities.Transactions>
+
+@{
+    ViewBag.Title = "Transactions";
+}
+
+<h2>Transactions</h2>
+
+<p>
+    <span>
+        @using (Html.BeginForm("Index","Transactions",FormMethod.Get))
+        {
+            <text>Warehouse</text>@Html.DropDownList("Location", new SelectList(ViewBag.Location), "All", new { @class = "form-control" })
+            //<text>Product Type</text>@Html.DropDownList("Type", new SelectList(ViewBag.Type), "All", new { @class = "form-control" })
+            <input class="btn btn-primary btn-sm" type="submit" value="Search" />
+        }
+</span>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Serial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarehouseFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarehouseTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Serial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarehouseFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarehouseTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reason)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.TransactionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TransactionID })           
+        </td>
+    </tr>
+}
+    <tr style="background:#abb8b8 ">
+        <td colspan="100" style="font-size:larger; text-align:right; padding-right:10%">
+            <strong><text>Total Items: </text> @Model.Count()</strong>
+        </td>
+    </tr>
+</table>

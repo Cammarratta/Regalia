@@ -1,0 +1,47 @@
+﻿@model InventoryMngmt.Web.ViewModels.InventoryModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transactions</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryProducts.Serial)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InventoryProducts.Serial)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryTransactions.WarehouseFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryTransactions.WarehouseFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryTransactions.WarehouseTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryTransactions.WarehouseTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryTransactions.Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryTransactions.Reason)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

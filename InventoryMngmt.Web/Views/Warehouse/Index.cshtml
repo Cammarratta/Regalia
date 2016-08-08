@@ -1,0 +1,72 @@
+﻿@model IEnumerable<InventoryMngmt.Entities.Product>
+
+@{
+    ViewBag.Title = "Warehouses";
+}
+
+<h2>Warehouses</h2>
+
+<p>
+    <span>
+        @using (Html.BeginForm("Index","Warehouse",FormMethod.Get))
+        {
+            <text>Warehouse</text>@Html.DropDownList("Location", new SelectList(ViewBag.Location), "All", new { @class = "form-control" })
+            <text>Product Type</text>@Html.DropDownList("Type", new SelectList(ViewBag.Type), "All", new { @class = "form-control" })
+            <input class="btn btn-primary btn-sm" type="submit" value="Search" />
+        }
+</span>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Serial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AcquisitionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Serial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AcquisitionDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+    </tr>
+}
+    <tr style="background:#abb8b8 ">
+        <td colspan="100" style="font-size:larger">
+            <strong><text>Total Items: </text> @Model.Count()</strong>
+        </td>
+    </tr>
+</table>
+
+@Html.ActionLink("All Warehouses", "Index")
+
+
